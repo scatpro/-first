@@ -1,0 +1,322 @@
+НАСЛЕДОВАНИе + классы
+class Person {
+    constructor(name, lastName, age){
+        this.name = name
+        this.lastName = lastName
+        this.age = age
+    }
+
+    regularPerson(){
+        console.log('Its regular person without speciac info')
+    }
+}
+
+class employe extends Person{
+    constructor(name,lastName,age,departament){
+        super (name, lastName, age)
+        this.departament = departament
+    }
+    departamentInfo(){
+        console.log('Here you can foun info ab departament')
+    }
+}
+
+class jobType extends employe{
+    constructor(name, lastName, age, departament, typeOfJob){
+        super(name, lastName, age, departament);
+        this.typeOfJob = typeOfJob
+    }
+    tester(){
+        console.log(`${this.name} from ${this.departament} can fund defects `)
+    }
+}
+
+
+class experience extends jobType{
+    constructor(name, lastName, age, departament, typeOfJob, experience) {
+        super(name, lastName, age, departament, typeOfJob);
+        this.experience = experience;
+    }
+    checkKnowns (){
+        if (this.typeOfJob ==='QA'){
+            return 'QA'
+        }
+        else{
+            return 'Dev'
+        }
+    }
+}
+
+
+const person1 = new jobType('Pavel', 'Ermolov', 29, 'Omega', 'Tester');
+const personWithExperience = new experience('John', 'Doe', 30, 'IT Department', 'Tester', '5 years');
+
+person1.departamentInfo()
+console.log(person1)
+person1.tester()
+console.log(personWithExperience.checkKnowns());
+
+
+
+Напишите функцию, которая принимает два параметра (числа) и возвращает их сумму.
+
+function summOfArg (a,b){
+return (a+b)
+}
+var result = summOfArg (2,4)
+console.log(result)
+
+/strelochnaja
+let summa = (a,b) => a+b
+let result = summa (2,5)
+console.log(result)
+
+
+2,
+Напишите функцию, которая принимает число и проверяет, является ли оно четным. Функция должна возвращать true для четных чисел и false для нечетных.
+
+let isEven = (a) => a % 2 === 0;
+
+let result1 = isEven(3);
+console.log(result1); // Выведет в консоль: false
+
+let result2 = isEven(4);
+console.log(result2); // Выведет в консоль: true
+
+3.
+Напишите функцию, которая принимает массив чисел и возвращает максимальное число в этом массиве.
+
+                                                         or let findmax = (scat) => Math.max (...scat)
+
+
+let myArr = [1,2,45,6,5]
+let maxVal = findMax(myArr)
+
+console.log('max is :', maxVal)
+
+
+4.Напишите функцию, которая принимает строку и возвращает ее в обратном порядке. RESERS
+
+function reverseText(text) {
+  return text.split('').reverse().join('');
+}
+
+let orig = 'Hello SCAT_PRO'
+let reversedText = reverseText(orig);
+
+text.split(''): Разбивает строку text на массив отдельных символов. Например, строка "abc" превращается в массив ['a', 'b', 'c'].
+.reverse(): Переворачивает порядок элементов в массиве. В приведенном примере это приведет к массиву ['c', 'b', 'a'].
+.join(''): Объединяет элементы массива обратно в строку. В результате получается строка, в данном случае, "cba".
+return: Возвращает полученную строку из функции.
+
+
+5, случайное число
+console.log(Math.floor(Math.random() * 100) + 1);
+
+6
+элемент в массиве 
+
+function found  (arr,element){
+    return arr.includes(element)
+}
+const a = ['wd','wdw','scat']
+const searchElement = 'scat'
+
+if (found(a,searchElement)){
+    console.log(`there is ${searchElement}`)
+} else {
+    console.log(`there aren't ${searchElement}`)
+}
+
+
+
+
+
+
+
+
+Этот код представляет собой пример автоматизации веб-тестирования с использованием Selenium WebDriver и Node.js. Давайте разберем каждую часть кода:
+
+const { Builder, By, Key } = require("selenium-webdriver");: Здесь импортируются необходимые классы из библиотеки selenium-webdriver. Builder используется для создания экземпляра WebDriver, By предоставляет стратегии поиска элементов, а Key используется для ввода клавиш.
+
+const assert = require("assert"): Здесь импортируется модуль assert для проверки утверждений (assertions). Этот модуль предоставляет функции для проверки условий и генерации ошибок в случае их нарушения.
+
+async function example() { ... }: Это асинхронная функция, в которой будет выполняться автоматизированный тест. Использование async/await позволяет управлять асинхронным кодом более удобным способом.
+
+let driver = await new Builder().forBrowser('chrome').build();: Здесь создается экземпляр WebDriver для браузера Chrome с использованием Builder. await используется для ожидания завершения построения объекта.
+
+await driver.get('https://lambdatest.github.io/sample-todo-app/');: Далее происходит переход по указанному URL.
+
+await driver.findElement(By.id('sampletodotext')).sendKeys('Scat_pro', Key.RETURN): Этот блок кода находит элемент по его id (sampletodotext) и отправляет текстовую строку 'Scat_pro' с использованием sendKeys. Key.RETURN указывает на клавишу "Enter", что приведет к добавлению новой задачи.
+
+let todoText = await driver.findElement(By.xpath('//li[last()')).getText().then(function(value){ return value });: Здесь находится последний элемент списка (последняя добавленная задача) с использованием XPath, получается его текст и сохраняется в переменной todoText.
+
+assert.strictEqual(todoText, 'Scat_pro'): Используется модуль assert для утверждения, что текст последней добавленной задачи соответствует ожидаемому значению 'Scat_pro'.
+
+Таким образом, весь код представляет собой пример теста, который открывает веб-страницу, добавляет задачу и проверяет, что задача была успешно добавлена.
+
+
+
+
+
+TEST TASK
+
+class Person {
+    constructor (name,age,familyStatus){
+        this.name = name
+        this.age = age
+        this.familyStatus = familyStatus
+    }
+    unemployedPerson(){
+        console.log('this persom without job')
+    }
+}
+
+class Employe extends Person{
+    constructor (name,age,familyStatus,specialization,jobTitle, currentExperience){
+        super (name,age,familyStatus)
+        this.specialization = specialization
+        this.jobTitle = jobTitle
+        this.currentExperience = currentExperience
+    }
+}
+
+class EmployeeDatabase {
+    constructor(){
+        this.employees = []
+    }
+    addEmploye(employe){
+        this.employees.push(employe)
+    }
+    getEmployeList(){
+        return this.employees
+    }
+    removeEmployee(employee) {
+        const index = this.employees.indexOf(employee);
+    
+        if (index !== -1) {
+            this.employees.splice(index, 1);
+            console.log('Employee removed successfully');
+        } else {
+            console.log('Employee not found');
+        }
+    }
+    
+    
+
+}
+const employeeDB = new EmployeeDatabase();
+
+const scat = new Employe ('Scat', 29, false, 'qaEngineer', 'Senior Engineer', 5)
+const jana = new Employe ('Jana', 29, false, 'qaEngineer', 'Senior Engineer', 5)
+const dima = new Employe('Dima', 30,true,'qaEngineer', 'Senior Engineer', 5)
+employeeDB.addEmploye(scat)
+employeeDB.addEmploye(jana)
+
+
+const allEmployess = employeeDB.getEmployeList()
+console.log('List:', allEmployess)
+
+
+employeeDB.removeEmployee(scat);
+employeeDB.removeEmployee(jana);
+employeeDB.removeEmployee(dima)
+
+
+console.log('List:', allEmployess)
+
+/*
+
+const green = new Person ('Green', 29, true)
+green.unemployedPerson()*/
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////
+
+
+
+const fs = require('fs'); //предоставляет методы для работы с файловой системой
+
+class Person {
+    constructor (name,age,familyStatus){
+        this.name = name
+        this.age = age
+        this.familyStatus = familyStatus
+    }
+    unemployedPerson(){
+        console.log('this persom without job')
+    }
+}
+
+class Employe extends Person{
+    constructor (name,age,familyStatus,specialization,jobTitle, currentExperience){
+        super (name,age,familyStatus)
+        this.specialization = specialization
+        this.jobTitle = jobTitle
+        this.currentExperience = currentExperience
+    }
+}
+
+class EmployeeDatabase {
+    constructor(){
+        this.employees = []
+        this.filePath = 'employeeData.json'; // Имя файла, в котором будут храниться данные
+        this.loadFromDisk(); // Загрузка данных при создании экземпляра базы данных
+    }
+    addEmploye(employe){
+        this.employees.push(employe)
+        this.saveToDisk(); // Добавлен вызов метода для сохранения данных после добавления сотрудника
+    }
+    getEmployeList(){
+        return this.employees
+    }
+    removeEmployee(employee) {
+        const index = this.employees.indexOf(employee);
+    
+        if (index !== -1) {
+            this.employees.splice(index, 1);
+            this.saveToDisk();
+            console.log('Employee removed successfully');
+        } else {
+            console.log('Employee not found');
+        }
+       
+    }  
+
+
+loadFromDisk() {
+    try {
+        const data = fs.readFileSync(this.filePath, 'utf-8');  //синхронно читает содержимое файла (this.filePath) и сохраняет его в переменной data. В нашем случае, мы ожидаем, что файл содержит текст в формате JSON
+        this.employees = JSON.parse(data); //Мы используем JSON.parse для преобразования строки JSON (data) в объект JavaScript. Этот объект затем присваивается свойству employees в текущем экземпляре EmployeeDatabase
+    } catch (error) {
+        console.log('Error loading data from disk:', error.message);
+    }
+}
+saveToDisk() {
+    try {
+        const data = JSON.stringify(this.employees, null, 2);
+        //спользуется для преобразования массива сотрудников (this.employees) в JSON-строку.
+        // Параметр null используется для преобразования всех свойств объекта, а 2 указывает на использование отступов в два пробела для форматирования строки.
+        fs.writeFileSync(this.filePath, data, 'utf-8');
+        //: Метод writeFileSync синхронно записывает данные (data) в файл (this.filePath). В нашем случае, это JSON-строка с данными о сотрудниках.
+    } catch (error) {
+        console.log('Error saving data to disk:', error.message);
+    }
+}
+
+}
+
+
+
+
+const employeeDB = new EmployeeDatabase();
