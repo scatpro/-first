@@ -1,4 +1,4 @@
-1212
+121232132131
 НАСЛЕДОВАНИе + классы
 class Person {
     constructor(name, lastName, age){
