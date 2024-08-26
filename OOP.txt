@@ -1,0 +1,144 @@
+OOP
+        Инкапсуляция Инкапсуляция Инкапсуляция Инкапсуляция Инкапсуляция
+
+Инкапсуляция в программировании означает ограничение доступа 
+к некоторым компонентам объекта и предоставление доступа только к определенным частям. 
+В JavaScript, инкапсуляция может быть достигнута с использованием замыканий (closures) 
+и концепции приватных и публичных членов.
+
+function Counter() {
+    let count = 0; // Приватная переменная
+
+    // Публичные методы, предоставляющие доступ к приватной переменной
+    this.increment = function () {
+        count++;
+    };
+
+    this.decrement = function () {
+        if (count > 0) {
+            count--;
+        }
+    };
+
+    this.getCount = function () {
+        return count;
+    };
+}
+
+const counter = new Counter();
+
+counter.increment();
+counter.increment();
+counter.decrement();
+
+console.log(counter.getCount()); // Вывод: 1
+
+
+
+
+лиморфизм     Полиморфизм     Полиморфизм     Полиморфизм      Полиморфизм     Полиморфизм     Полиморфизм     Полиморфизм 
+
+Полиморфизм в программировании означает способность объектов разных типов предоставлять общий интерфейс.
+// Родительский класс
+class Animal {
+    makeSound() {
+        return 'Some generic sound';
+    }
+}
+
+// Дочерний класс Bird
+class Bird extends Animal {
+    makeSound() {
+        return 'Tweet tweet';
+    }
+}
+
+// Дочерний класс Fish
+class Fish extends Animal {
+    makeSound() {
+        return 'Blub blub';
+    }
+}
+
+// Использование полиморфизма
+const bird = new Bird();
+const fish = new Fish();
+
+console.log(bird.makeSound()); // Вывод: Tweet tweet
+console.log(fish.makeSound()); // Вывод: Blub blub
+
+
+/////////////////////////////////////trytry//trytry/trytrytrytrytrytry/try/trytrytrytrytrytrytry
+function scat(a, b) {
+    try {
+        if (b === 0) {
+            throw new Error('delenie na 0');  // Проброс ошибки при делении на ноль
+        }
+        const res = a / b;  // Выполнение деления
+        return res;  // Возврат результата
+    } catch (error) {
+        console.log(`text ${error.message}`);  // Вывод сообщения об ошибке
+        return null;  // Возврат null в случае ошибки
+    } finally {
+        console.log('dk');  // Сообщение, которое выводится всегда
+    }
+}
+
+const res1 = scat(5, 0);  // Вызов функции с делением на ноль
+console.log('res is', res1);  // Вывод результата
+
+
+
+
+
+Git - это система контроля версий, и для работы с ней используются различные команды в командной строке (терминале). Вот несколько основных команд Git:
+
+git init: Инициализация нового репозитория.
+git init
+
+git remote add repName https://github.com/ваш-логин/ваш-репозиторий.git
+
+
+git clone: Клонирование существующего репозитория.
+git clone <url>
+
+git add: Добавление изменений к индексу (staging area) перед коммитом.
+git add <file>
+
+git add .: Добавление всех измененных файлов.
+git commit: Коммит изменений с комментарием.
+
+
+git commit -m "Ваш комментарий"
+git status: Показ статуса изменений.
+git status
+
+git log: Просмотр истории коммитов.
+git log
+
+
+Чтобы настроить связь между локальной веткой master и удаленным репозиторием, выполните следующую команду:
+git push --set-upstream origin master
+
+
+git pull: Получение изменений с удаленного репозитория.
+git pull
+
+git push: Отправка изменений в удаленный репозиторий.
+git push
+
+git branch: Просмотр списка и создание новых веток.
+git branch
+git branch <branch_name>
+
+git checkout: Переключение между ветками.
+
+git checkout <branch_name>
+git merge: Объединение изменений из одной ветки в другую.
+git merge <branch_name>
+
+git remote: Управление удаленными репозиториями.
+git remote -v
+
+git fetch: Получение данных из удаленного репозитория, но без объединения их с текущей веткой.
+git fetch
